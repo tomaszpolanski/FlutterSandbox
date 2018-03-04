@@ -80,6 +80,10 @@ class MainActivity : AppCompatActivity() {
 
         val fab = findViewById<FloatingActionButton>(R.id.button)
         fab.setOnClickListener { sendAndroidIncrement() }
+        fab.setOnLongClickListener {
+            startActivity(Intent(applicationContext, MainFlutterActivity::class.java))
+            true
+        }
     }
 
 

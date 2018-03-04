@@ -14,3 +14,4 @@ doc/api/
 /android/.idea
 /android/.gradle
 /android/gradle/wrapper
+*.iml

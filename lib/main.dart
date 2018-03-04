@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rxdart/rxdart.dart';
 
 void main() {
   runApp(new FlutterView());
@@ -30,7 +31,9 @@ class _MyHomePageState extends State<MyHomePage> {
   static const String _pong = 'pong';
   static const String _emptyMessage = '';
   static const BasicMessageChannel<String> platform =
-      const BasicMessageChannel<String>(_channel, const StringCodec());
+  const BasicMessageChannel<String>(_channel, const StringCodec());
+
+  final PublishSubject<int> subject = new PublishSubject<int>();
 
   int _counter = 0;
 
@@ -39,15 +42,25 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     platform.setMessageHandler(_handlePlatformIncrement);
 
-//    new Stream<int>.periodic(const Duration(milliseconds: 50))
-//        .listen((_) {
-//      _sendFlutterIncrement();
-//    });
+    subject.stream
+        .flatMapLatest((eventsPerSecond) =>
+    new Stream<int>.periodic(
+        new Duration(milliseconds: (1000 / eventsPerSecond).round())))
+        .listen((_) {
+      _sendFlutterIncrement();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    subject.close();
   }
 
   Future<String> _handlePlatformIncrement(String message) async {
+    subject.add(int.parse(message));
     setState(() {
-      _counter++;
+      _counter = int.parse(message);
     });
     return _emptyMessage;
   }
@@ -65,9 +78,8 @@ class _MyHomePageState extends State<MyHomePage> {
           new Expanded(
             child: new Center(
                 child: new Text(
-                    'Platform button tapped $_counter time${ _counter == 1
-                        ? ''
-                        : 's' }.',
+                    'Trying to send $_counter event${ _counter == 1 ? '' : 's' } '
+                        'per second',
                     style: const TextStyle(fontSize: 17.0))),
           ),
           new Container(
@@ -81,10 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _sendFlutterIncrement,
-        child: const Icon(Icons.add),
       ),
     );
   }

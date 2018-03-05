@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rxdart/rxdart.dart';
+
+const int _kMaxEventsPerSecond = 1000;
 
 void main() {
   runApp(new FlutterView());
@@ -58,9 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<String> _handlePlatformIncrement(String message) async {
-    subject.add(int.parse(message));
+    final capedCount = min(int.parse(message), _kMaxEventsPerSecond);
+    subject.add(capedCount);
     setState(() {
-      _counter = int.parse(message);
+      _counter = capedCount;
     });
     return _emptyMessage;
   }

@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_view/pages/QrCodePage.dart';
 import 'package:rxdart/rxdart.dart';
 
 const int _kMaxEventsPerSecond = 1000;
@@ -17,7 +19,7 @@ class FlutterView extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter View',
       theme: new ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.green,
       ),
       home: new MyHomePage(),
     );
@@ -76,6 +78,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      floatingActionButton: new FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(new MaterialPageRoute<Null>(
+              builder: (BuildContext context) {
+                return new QrCodePage();
+              },
+            ));
+          },
+        child: new Icon(Icons.open_in_new),
+      ),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

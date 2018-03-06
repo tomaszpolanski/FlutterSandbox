@@ -13,6 +13,5 @@ doc/api/
 /.idea
 /android/.idea
 /android/.gradle
-/android/gradle/wrapper
 *.iml
-android/local.properties
+.flutter-plugins

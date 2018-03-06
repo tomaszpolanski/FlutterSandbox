@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_view/components/HeroIcon.dart';
 import 'package:flutter_view/routing/Routes.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
         child: new ListTile(
           title: new Text(page.title),
           subtitle: new Text(page.description),
-          leading: new Icon(Icons.add_a_photo),
+          leading: new HeroIcon(Icons.add_a_photo),
           onTap: () {
             Routes.router.navigateTo(context, Routes.kQrCodesPage,
                 transition: TransitionType.native);

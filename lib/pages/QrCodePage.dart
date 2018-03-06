@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_view/components/HeroIcon.dart';
 import 'package:qrcode_reader/QRCodeReader.dart';
 
 
@@ -45,7 +46,7 @@ class _QrCodePageState extends State<QrCodePage> {
           });
         },
         tooltip: 'Reader the QRCode',
-        child: new Icon(Icons.add_a_photo),
+        child: new HeroIcon(Icons.add_a_photo),
       ),
     );
   }

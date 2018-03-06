@@ -10,6 +10,22 @@ class HomePage extends StatelessWidget {
         description: "Reading QR Codes"),
   ];
 
+  final Tween<Offset> _kBottomUpTween = new Tween<Offset>(
+    begin: const Offset(0.0, 1.0),
+    end: Offset.zero,
+  );
+
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) =>
+      new SlideTransition(
+          position: _kBottomUpTween.animate(
+            new CurvedAnimation(
+              parent: animation,
+              curve: Curves.fastOutSlowIn,
+            ),
+          ),
+          child: child);
+
   Widget _buildListTile(BuildContext context, ExamplePage page) {
     return new MergeSemantics(
       child: new Card(
@@ -18,8 +34,15 @@ class HomePage extends StatelessWidget {
           subtitle: new Text(page.description),
           leading: new HeroIcon(Icons.add_a_photo),
           onTap: () {
-            Routes.router.navigateTo(context, Routes.kQrCodesPage,
-                transition: TransitionType.native);
+            if (Theme.of(context).platform == TargetPlatform.android) {
+              Routes.router.navigateTo(context, page.route,
+                  transition: TransitionType.custom, transitionBuilder: buildTransitions,
+                  transitionDuration: const Duration(milliseconds: 500));
+            } else {
+              Routes.router.navigateTo(context, page.route,
+                  transition: TransitionType.native);
+            }
+
           },
         ),
       ),

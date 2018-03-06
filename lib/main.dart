@@ -1,11 +1,15 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:fluro/fluro.dart';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_view/pages/QrCodePage.dart';
+import 'package:flutter_view/routing/Routes.dart';
 import 'package:rxdart/rxdart.dart';
+
 
 const int _kMaxEventsPerSecond = 1000;
 
@@ -13,7 +17,13 @@ void main() {
   runApp(new FlutterView());
 }
 
+
 class FlutterView extends StatelessWidget {
+
+  FlutterView() {
+    Routes.configureRoutes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
@@ -21,12 +31,15 @@ class FlutterView extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: new MyHomePage(),
+      home: new MyHomePage(Routes.router),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  MyHomePage(this.router);
+
+  final Router router;
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
@@ -80,11 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
     return new Scaffold(
       floatingActionButton: new FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).push(new MaterialPageRoute<Null>(
-              builder: (BuildContext context) {
-                return new QrCodePage();
-              },
-            ));
+            widget.router.navigateTo(context, Routes.kHomePage,
+                transition: TransitionType.native);
           },
         child: new Icon(Icons.open_in_new),
       ),

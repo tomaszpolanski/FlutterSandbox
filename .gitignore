@@ -18,3 +18,4 @@ doc/api/
 android/local.properties
 /android/local.properties
 android/local.properties
+android/app/app.iml

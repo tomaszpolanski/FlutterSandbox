@@ -6,8 +6,10 @@ import 'package:flutter_view/routing/Routes.dart';
 class HomePage extends StatelessWidget {
   
   final List<ExamplePage> _pages = [
-    new ExamplePage("Qr Codes", Routes.kQrCodesPage,
+    new ExamplePage("Qr Codes", Routes.kQrCodesPage, Icons.add_a_photo,
         description: "Reading QR Codes"),
+    new ExamplePage("Push Notifications", Routes.kPush, Icons.notifications,
+        description: "Receiving push notifications"),
   ];
 
   final Tween<Offset> _kBottomUpTween = new Tween<Offset>(
@@ -32,7 +34,7 @@ class HomePage extends StatelessWidget {
         child: new ListTile(
           title: new Text(page.title),
           subtitle: new Text(page.description),
-          leading: new HeroIcon(Icons.add_a_photo),
+          leading: new HeroIcon(page.icon),
           onTap: () {
             if (Theme.of(context).platform == TargetPlatform.android) {
               Routes.router.navigateTo(context, page.route,
@@ -67,9 +69,10 @@ class HomePage extends StatelessWidget {
 }
 
 class ExamplePage {
-  ExamplePage(this.title, this.route, {this.description});
+  ExamplePage(this.title, this.route, this.icon, {this.description});
   
   final String title;
   final String route;
+  final IconData icon;
   final String description;
 }

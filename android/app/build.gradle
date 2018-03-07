@@ -8,7 +8,8 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new GradleException(
+            "Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 apply plugin: 'com.android.application'
@@ -45,6 +46,7 @@ flutter {
 }
 
 dependencies {
+    implementation 'com.google.firebase:firebase-messaging:11.0.4'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -57,3 +59,5 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'com.google.gms.google-services'

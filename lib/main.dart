@@ -6,9 +6,9 @@ import 'package:fluro/fluro.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_view/pages/QrCodePage.dart';
 import 'package:flutter_view/routing/Routes.dart';
 import 'package:rxdart/rxdart.dart';
+
 
 
 const int _kMaxEventsPerSecond = 1000;

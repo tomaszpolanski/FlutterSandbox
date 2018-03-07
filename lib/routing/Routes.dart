@@ -1,12 +1,14 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_view/pages/HomePage.dart';
+import 'package:flutter_view/pages/PushNotificationPage.dart';
 import 'package:flutter_view/pages/QrCodePage.dart';
 
 class Routes {
 
   static String kHomePage = "/home";
   static String kQrCodesPage = "/home/qrcodes";
+  static String kPush = "/home/push";
 
   static final Router router = new Router();
 
@@ -14,6 +16,7 @@ class Routes {
   static void configureRoutes() {
     router.define(kHomePage, handler: homeHandler);
     router.define(kQrCodesPage, handler: qrCodeHandler);
+    router.define(kPush, handler: pushHandler);
   }
 
 }
@@ -25,4 +28,8 @@ final homeHandler = new Handler(handlerFunc: (BuildContext context, Map<String, 
 
 final qrCodeHandler = new Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return new QrCodePage();
+});
+
+final pushHandler = new Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return new PushNotificationPage();
 });

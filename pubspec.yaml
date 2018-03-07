@@ -9,6 +9,9 @@ dependencies:
   qrcode_reader: "^0.3.2"
   fluro: "^1.2.1"
   firebase_messaging: "^0.1.4"
+  redux: "^2.1.1"
+  flutter_redux: "^0.3.5"
+  redux_epics: "^0.8.0"
 
   args: 1.3.0 # TRANSITIVE DEPENDENCY
   async: 2.0.4 # TRANSITIVE DEPENDENCY

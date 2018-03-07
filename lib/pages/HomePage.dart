@@ -10,6 +10,8 @@ class HomePage extends StatelessWidget {
         description: "Reading QR Codes"),
     new ExamplePage("Push Notifications", Routes.kPush, Icons.notifications,
         description: "Receiving push notifications"),
+    new ExamplePage("Redux", Routes.kRedux, Icons.redo,
+        description: "Using Redux architecture"),
   ];
 
   final Tween<Offset> _kBottomUpTween = new Tween<Offset>(

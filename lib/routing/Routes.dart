@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_view/pages/HomePage.dart';
 import 'package:flutter_view/pages/PushNotificationPage.dart';
 import 'package:flutter_view/pages/QrCodePage.dart';
+import 'package:flutter_view/pages/ReduxPage.dart';
 
 class Routes {
 
   static String kHomePage = "/home";
   static String kQrCodesPage = "/home/qrcodes";
   static String kPush = "/home/push";
+  static String kRedux = "/home/redux";
 
   static final Router router = new Router();
 
@@ -17,6 +19,7 @@ class Routes {
     router.define(kHomePage, handler: homeHandler);
     router.define(kQrCodesPage, handler: qrCodeHandler);
     router.define(kPush, handler: pushHandler);
+    router.define(kRedux, handler: reduxHandler);
   }
 
 }
@@ -32,4 +35,8 @@ final qrCodeHandler = new Handler(handlerFunc: (BuildContext context, Map<String
 
 final pushHandler = new Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
   return new PushNotificationPage();
+});
+
+final reduxHandler = new Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+  return new ReduxPage();
 });

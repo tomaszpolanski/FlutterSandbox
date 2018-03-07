@@ -18,7 +18,7 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
   void initState() {
     super.initState();
     _firebaseMessaging.requestNotificationPermissions();
-    _firebaseMessaging.configure(
+    _firebaseMessaging..configure(
       onMessage: (Map<String, dynamic> message) {
         setState(() {
           _message = message.values.first;
@@ -31,8 +31,7 @@ class _PushNotificationPageState extends State<PushNotificationPage> {
       onResume: (Map<String, dynamic> message) {
         print("onResume: $message");
       },
-    );
-    _firebaseMessaging.getToken().then((String token) {
+    )..getToken().then((String token) {
       assert(token != null);
     });
   }

@@ -12,6 +12,8 @@ class HomePage extends StatelessWidget {
         description: "Receiving push notifications"),
     new ExamplePage("Redux", Routes.kRedux, Icons.redo,
         description: "Using Redux architecture"),
+    new ExamplePage("Photo List", Routes.kPhotoView, Icons.photo,
+        description: "Paginated Image Example"),
   ];
 
   final Tween<Offset> _kBottomUpTween = new Tween<Offset>(

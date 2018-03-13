@@ -5,9 +5,11 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_view/features/photoview/Reducers.dart';
 import 'package:flutter_view/routing/Routes.dart';
 import 'package:flutter_view/state/AppState.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 
 
@@ -21,8 +23,9 @@ void main() {
 
 class FlutterView extends StatelessWidget {
   final store = new Store<AppState>(
-    appStateReducer,
-    initialState: new AppState(),
+      appStateReducer,
+      initialState: new AppState(),
+      middleware: [new EpicMiddleware(allEpics)]
   );
   FlutterView() {
 

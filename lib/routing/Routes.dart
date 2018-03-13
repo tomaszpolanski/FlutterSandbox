@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_view/pages/HomePage.dart';
-import 'package:flutter_view/pages/PhotoListPage.dart';
+import 'package:flutter_view/features/photoview/PhotoListPage.dart';
 import 'package:flutter_view/pages/PushNotificationPage.dart';
 import 'package:flutter_view/pages/QrCodePage.dart';
 import 'package:flutter_view/pages/ReduxPage.dart';

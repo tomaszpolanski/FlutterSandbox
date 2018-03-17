@@ -11,7 +11,12 @@ import 'package:flutter_view/state/AppState.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
-
+import 'package:flutter/rendering.dart' show
+debugPaintSizeEnabled,
+debugPaintBaselinesEnabled,
+debugPaintLayerBordersEnabled,
+debugPaintPointersEnabled,
+debugRepaintRainbowEnabled;
 
 
 const int _kMaxEventsPerSecond = 1000;
@@ -28,7 +33,7 @@ class FlutterView extends StatelessWidget {
       middleware: [new EpicMiddleware(allEpics)]
   );
   FlutterView() {
-
+    debugRepaintRainbowEnabled = true;
     Routes.configureRoutes();
   }
 

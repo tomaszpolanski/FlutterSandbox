@@ -1,11 +1,8 @@
-
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_view/features/photoview/PhotoActions.dart';
 import 'package:flutter_view/state/AppState.dart';
-
 import 'package:redux/redux.dart';
 
 class PhotoListPage extends StatefulWidget {
@@ -35,7 +32,8 @@ class _PhotoListPageState extends State<PhotoListPage> {
           ),
           body: new GridView.builder(
             controller: scrollController,
-            itemCount: store.state.images == null ? 0 : store.state.images .length,
+            itemCount: store.state.images == null ? 0 : store.state.images
+                .length,
             gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 2.0,
@@ -43,17 +41,20 @@ class _PhotoListPageState extends State<PhotoListPage> {
               childAspectRatio: 1.0,
             ),
             itemBuilder: (BuildContext context, int index) {
-              if (store.state.images.length - index == 50) {
-                store.dispatch(new FetchImagesAction(store.state.currentPage + 1));
+              if (store.state.images.length - index == 150) {
+                store.dispatch(
+                    new FetchImagesAction(store.state.currentPage + 1));
               }
               return new CachedNetworkImage(
                 fit: BoxFit.cover,
                 imageUrl: store.state.images[index],
-                placeholder: new Container(
-                    padding: const EdgeInsets.all(20.0),
-                    child: new CircularProgressIndicator(
-                      strokeWidth: 16.0,
-                    )),
+                placeholder: new Center(
+                  child: new Text(index.toString(), style:
+                  Theme .of(context)
+                      .textTheme
+                      .display2,
+                  ),
+                ),
                 errorWidget: new Icon(Icons.error),
               );
             },

@@ -36,6 +36,7 @@ Stream<dynamic> imageFetchEpic(Stream<dynamic> actions,
     EpicStore<AppState> store) {
   return new Observable(actions)
       .ofType(new TypeToken<FetchImagesAction>())
+  .distinct( )
       .flatMap((FetchImagesAction requestAction) {
     print("Fetching ${requestAction.page}");
     return fetchImages(requestAction.page)
@@ -49,7 +50,7 @@ Stream<dynamic> imageFetchEpic(Stream<dynamic> actions,
 
 Observable<List<String>> fetchImages(int page) {
   return new Observable.fromFuture(http.get(
-      'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=&text=puppy&format=json&nojsoncallback=1&page=$page'))
+      'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=&text=puppy&format=json&nojsoncallback=1&per_page=300&page=$page'))
       .map((response) => JSON.decode(response.body))
       .map((json) =>
       json['photos']['photo']

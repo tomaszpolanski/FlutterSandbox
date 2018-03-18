@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:fluro/fluro.dart';
@@ -12,16 +13,15 @@ import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/rendering.dart' show
-debugPaintSizeEnabled,
-debugPaintBaselinesEnabled,
-debugPaintLayerBordersEnabled,
-debugPaintPointersEnabled,
 debugRepaintRainbowEnabled;
+import 'package:flutter_stetho/flutter_stetho.dart';
 
 
 const int _kMaxEventsPerSecond = 1000;
 
 void main() {
+  HttpOverrides.global = new StethoHttpOverrides();
+
   runApp(new FlutterView());
 }
 

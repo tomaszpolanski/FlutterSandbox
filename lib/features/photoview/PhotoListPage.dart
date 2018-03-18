@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_view/features/photoview/PhotoActions.dart';
@@ -45,17 +44,10 @@ class _PhotoListPageState extends State<PhotoListPage> {
                 store.dispatch(
                     new FetchImagesAction(store.state.currentPage + 1));
               }
-              return new CachedNetworkImage(
-                fit: BoxFit.cover,
-                imageUrl: store.state.images[index],
-                placeholder: new Center(
-                  child: new Text(index.toString(), style:
-                  Theme .of(context)
-                      .textTheme
-                      .display2,
-                  ),
-                ),
-                errorWidget: new Icon(Icons.error),
+              return new FadeInImage.assetNetwork(
+                placeholder: "assets/flutter_high.png",
+                fit: BoxFit.fill,
+                image: store.state.images[index],
               );
             },
           ),

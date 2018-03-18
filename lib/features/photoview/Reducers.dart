@@ -12,20 +12,16 @@ import 'package:rxdart/rxdart.dart';
 final imagesReducer = combineTypedReducers<List<String>>([
   new ReducerBinding<List<String>, FetchResultImagesAction>((
       List<String> oldImages,
-      FetchResultImagesAction action) {
-    List<String> list = new List();
-    if (oldImages != null) list.addAll(oldImages);
-    list.addAll(action.images);
-    return list;
-  }),
+      FetchResultImagesAction action) =>
+  new List()
+    ..addAll(oldImages)
+    ..addAll(action.images)),
 ]);
 
 
 final currentPageReducer = combineTypedReducers<int>([
   new ReducerBinding<int, FetchResultImagesAction>((int oldPage,
-      FetchResultImagesAction action) =>
-  action.page
-  ),
+      FetchResultImagesAction action) => action.page),
 ]);
 
 Stream<dynamic> imageFetchEpic(Stream<dynamic> actions,

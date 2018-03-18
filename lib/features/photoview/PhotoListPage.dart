@@ -11,9 +11,10 @@ class PhotoListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new StoreBuilder(
-      onInit: (store) {
-        if (store.state.images == null) {
-          store.dispatch(new FetchImagesAction(store.state.currentPage + 1));
+      onInit: (Store store) {
+        AppState state = store.state;
+        if (state.images.isEmpty) {
+          store.dispatch(new FetchImagesAction(state.currentPage + 1));
         }
       },
       onDispose: (store) => store.dispatch(new CancelFetchImagesAction()),
@@ -24,8 +25,7 @@ class PhotoListPage extends StatelessWidget {
           ),
           body: new GridView.builder(
             controller: scrollController,
-            itemCount: store.state.images == null ? 0 : store.state.images
-                .length,
+            itemCount: store.state.images.length,
             gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 2.0,

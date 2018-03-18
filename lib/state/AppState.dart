@@ -6,12 +6,12 @@ import 'package:redux_epics/redux_epics.dart';
 class AppState {
   final int counter;
   final int currentPage;
-  List<String> images = new List<String>();
+  final List<String> images;
 
   AppState({
     this.counter = 0,
     this.currentPage = 0,
-    this.images,
+    this.images = const [],
   });
 
   AppState copyWith({int counter, int currentPage, List<String> images}) =>

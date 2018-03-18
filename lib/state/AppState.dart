@@ -1,6 +1,7 @@
 import 'package:flutter_view/state/Actions.dart';
 import 'package:flutter_view/features/photoview/Reducers.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_epics/redux_epics.dart';
 
 class AppState {
   final int counter;
@@ -21,6 +22,8 @@ class AppState {
       );
 }
 
+final allEpics = combineEpics<AppState>([imageFetchEpic]);
+
 AppState appStateReducer(AppState state, dynamic action) {
   return new AppState(
       counter: counterReducer(state.counter, action),
@@ -30,10 +33,5 @@ AppState appStateReducer(AppState state, dynamic action) {
 }
 
 final counterReducer = combineTypedReducers<int>([
-  new ReducerBinding<int, IncrementCounterAction>(_incrementCounter),
+  new ReducerBinding<int, IncrementCounterAction>((int oldCounter, action) => oldCounter + 1),
 ]);
-
-
-int _incrementCounter(int oldCounter, action) {
-  return oldCounter + 1;
-}

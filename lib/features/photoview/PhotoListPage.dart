@@ -4,16 +4,9 @@ import 'package:flutter_view/features/photoview/PhotoActions.dart';
 import 'package:flutter_view/state/AppState.dart';
 import 'package:redux/redux.dart';
 
-class PhotoListPage extends StatefulWidget {
-  @override
-  _PhotoListPageState createState() => new _PhotoListPageState();
-}
-
-class _PhotoListPageState extends State<PhotoListPage> {
+class PhotoListPage extends StatelessWidget {
 
   final ScrollController scrollController = new ScrollController();
-  int currentPage = 1;
-
 
   @override
   Widget build(BuildContext context) {

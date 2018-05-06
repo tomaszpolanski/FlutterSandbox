@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 
-class QrCodePage extends StatefulWidget {
-  QrCodePage({Key key, this.title}) : super(key: key);
+class MultiChildLayout extends StatelessWidget {
+  MultiChildLayout({Key key}) : super(key: key);
 
-  final String title;
-
-  final Map<String, dynamic> pluginParameters = {};
-
-  @override
-  _QrCodePageState createState() => new _QrCodePageState();
-}
-
-class _QrCodePageState extends State<QrCodePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('CustomMultiChildLayout')),
+        appBar: AppBar(
+          title: Text('CustomMultiChildLayout'),
+          automaticallyImplyLeading: true,
+        ),
         body: new CustomMultiChildLayout(
           delegate: new LongAndShortDelegate(),
           children: <Widget>[

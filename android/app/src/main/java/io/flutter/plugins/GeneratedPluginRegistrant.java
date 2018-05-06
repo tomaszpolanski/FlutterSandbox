@@ -4,7 +4,6 @@ import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin;
 import com.brianegan.flutterstetho.FlutterStethoPlugin;
 import io.flutter.plugins.pathprovider.PathProviderPlugin;
-import com.matheusvillela.flutter.plugins.qrcodereader.QRCodeReaderPlugin;
 import io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin;
 
 /**
@@ -18,7 +17,6 @@ public final class GeneratedPluginRegistrant {
     FirebaseMessagingPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"));
     FlutterStethoPlugin.registerWith(registry.registrarFor("com.brianegan.flutterstetho.FlutterStethoPlugin"));
     PathProviderPlugin.registerWith(registry.registrarFor("io.flutter.plugins.pathprovider.PathProviderPlugin"));
-    QRCodeReaderPlugin.registerWith(registry.registrarFor("com.matheusvillela.flutter.plugins.qrcodereader.QRCodeReaderPlugin"));
     SharedPreferencesPlugin.registerWith(registry.registrarFor("io.flutter.plugins.sharedpreferences.SharedPreferencesPlugin"));
   }
 

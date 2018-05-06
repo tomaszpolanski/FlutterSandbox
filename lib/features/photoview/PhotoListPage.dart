@@ -38,6 +38,7 @@ class PhotoListPage extends StatelessWidget {
                     new FetchImagesAction(store.state.currentPage + 1));
               }
               return new FadeInImage.assetNetwork(
+                fadeInDuration: const Duration(milliseconds: 200),
                 placeholder: "assets/flutter_high.png",
                 fit: BoxFit.fill,
                 image: store.state.images[index],

@@ -6,7 +6,6 @@
 #import <firebase_messaging/FirebaseMessagingPlugin.h>
 #import <flutter_stetho/FlutterStethoPlugin.h>
 #import <path_provider/PathProviderPlugin.h>
-#import <qrcode_reader/QRCodeReaderPlugin.h>
 #import <shared_preferences/SharedPreferencesPlugin.h>
 
 @implementation GeneratedPluginRegistrant
@@ -15,7 +14,6 @@
   [FLTFirebaseMessagingPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTFirebaseMessagingPlugin"]];
   [FlutterStethoPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterStethoPlugin"]];
   [FLTPathProviderPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTPathProviderPlugin"]];
-  [QRCodeReaderPlugin registerWithRegistrar:[registry registrarForPlugin:@"QRCodeReaderPlugin"]];
   [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
 }
 

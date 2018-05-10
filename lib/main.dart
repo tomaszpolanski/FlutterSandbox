@@ -11,8 +11,7 @@ import 'package:flutter_view/state/AppState.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:flutter/rendering.dart' show
-debugRepaintRainbowEnabled;
+
 import 'package:flutter_stetho/flutter_stetho.dart';
 
 
@@ -32,7 +31,6 @@ class FlutterView extends StatelessWidget {
       middleware: [new EpicMiddleware(allEpics)]
   );
   FlutterView() {
-    debugRepaintRainbowEnabled = true;
     Routes.configureRoutes();
   }
 

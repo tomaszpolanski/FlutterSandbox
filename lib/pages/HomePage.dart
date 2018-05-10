@@ -6,14 +6,16 @@ import 'package:flutter_view/routing/Routes.dart';
 class HomePage extends StatelessWidget {
   
   final List<ExamplePage> _pages = [
-    new ExamplePage("Qr Codes", Routes.kQrCodesPage, Icons.add_a_photo,
-        description: "Reading QR Codes"),
+    new ExamplePage("MultiChild Layout", Routes.kQrCodesPage, Icons.add_a_photo,
+        description: "Layouting some stuff"),
     new ExamplePage("Push Notifications", Routes.kPush, Icons.notifications,
         description: "Receiving push notifications"),
     new ExamplePage("Redux", Routes.kRedux, Icons.redo,
         description: "Using Redux architecture"),
     new ExamplePage("Photo List", Routes.kPhotoView, Icons.photo,
         description: "Paginated Image Example"),
+    new ExamplePage("Sliver1", Routes.kSliver1, Icons.golf_course,
+        description: "Basic slivers"),
   ];
 
   final Tween<Offset> _kBottomUpTween = new Tween<Offset>(

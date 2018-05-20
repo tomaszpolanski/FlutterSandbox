@@ -72,6 +72,17 @@ class Sliver1 extends StatelessWidget {
           new SliverToBoxAdapter(
             child: const Text("Hi2"),
           ),
+          new SliverFillViewport(
+            delegate: new SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return new Card(
+                  color: Colors.yellowAccent,
+                  child: new Text("Little old me $index"),
+                );
+              },
+              childCount: 2,
+            ),
+          ),
         ],
       ),
     );

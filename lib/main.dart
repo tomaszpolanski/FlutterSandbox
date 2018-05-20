@@ -6,6 +6,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_view/pages/HomePage.dart';
 import 'package:flutter_view/routing/Routes.dart';
 import 'package:flutter_view/state/AppState.dart';
 import 'package:redux/redux.dart';
@@ -43,7 +44,7 @@ class FlutterView extends StatelessWidget {
         theme: new ThemeData(
           primarySwatch: Colors.green,
         ),
-        home: new MyHomePage(Routes.router),
+        home: new HomePage(),
       ),
     );
   }
@@ -71,6 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+
+
     platform.setMessageHandler(_handlePlatformIncrement);
 
     subject.stream

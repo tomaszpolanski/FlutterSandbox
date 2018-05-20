@@ -24,7 +24,7 @@ final currentPageReducer = combineTypedReducers<int>([
       FetchResultImagesAction action) => action.page),
 ]);
 
-Stream<dynamic> imageFetchEpic(Stream<dynamic> actions,
+Stream<dynamic> imageFetchEpic<AppState>(Stream<dynamic> actions,
     EpicStore<AppState> store) =>
     new Observable(actions)
         .ofType(new TypeToken<FetchImagesAction>())
@@ -39,7 +39,7 @@ Stream<dynamic> imageFetchEpic(Stream<dynamic> actions,
 
 Observable<List<String>> fetchImages(int page) =>
     new Observable.fromFuture(http.get(
-        'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=&text=puppy&format=json&nojsoncallback=1&per_page=300&page=$page'))
+        'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=2a8de634457a7011438c1f23577214f5&text=puppy&format=json&nojsoncallback=1&per_page=300&page=$page'))
         .map((response) => JSON.decode(response.body))
         .map((json) =>
         json['photos']['photo']

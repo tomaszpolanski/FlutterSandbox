@@ -5,7 +5,8 @@ import 'package:flutter_view/features/photoview/PhotoListPage.dart';
 import 'package:flutter_view/pages/PushNotificationPage.dart';
 import 'package:flutter_view/pages/MultiChildLayout.dart';
 import 'package:flutter_view/pages/ReduxPage.dart';
-import 'package:flutter_view/pages/Sliver1.dart';
+import 'package:flutter_view/features/silvers/Sliver1.dart';
+import 'package:flutter_view/features/silvers/Sliver2.dart';
 
 class Routes {
 
@@ -15,6 +16,7 @@ class Routes {
   static String kRedux = "/home/redux";
   static String kPhotoView = "/home/photoview";
   static String kSliver1 = "/home/sliver1";
+  static String kSliver2 = "/home/sliver2";
 
   static final Router router = new Router();
 
@@ -26,6 +28,7 @@ class Routes {
     router.define(kRedux, handler: reduxHandler);
     router.define(kPhotoView, handler: photoHandler);
     router.define(kSliver1, handler: new Handler(handlerFunc: (_, __) => new Sliver1()));
+    router.define(kSliver2, handler: new Handler(handlerFunc: (_, __) => new Sliver2()));
   }
 
 }

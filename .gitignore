@@ -19,3 +19,4 @@ android/local.properties
 /android/local.properties
 android/local.properties
 android/app/app.iml
+.vscode/launch.json

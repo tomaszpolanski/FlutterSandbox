@@ -10,18 +10,12 @@ class Sliver2 extends StatelessWidget {
       child: new CustomScrollView(
         slivers: <Widget>[
           new CustomAppBar(
-            pinned: true,
             expandedHeight: 150.0,
             flexibleSpace: new Bar(
-              title: new Text('Demo'),
-              background: new Container(
-                height: double.infinity,
-                width: double.infinity,
-                color: Colors.red,
-              ),
+              start: Colors.red,
+              end: Colors.purple,
             ),
           ),
-
           new SliverFixedExtentList(
             itemExtent: 50.0,
             delegate: new SliverChildBuilderDelegate(

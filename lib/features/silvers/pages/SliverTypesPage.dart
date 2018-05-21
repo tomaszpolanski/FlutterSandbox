@@ -90,7 +90,7 @@ class SliverTypesPage extends StatelessWidget {
               child: new Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: new Text(
-                  "And the rest Used",
+                  "And the Rest",
                   style: Theme
                       .of(context)
                       .textTheme

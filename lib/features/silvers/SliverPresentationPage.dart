@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_view/features/silvers/pages/ImplementingHeader.dart';
+import 'package:flutter_view/features/silvers/pages/SimpleDemo.dart';
 import 'package:flutter_view/features/silvers/pages/SliverTypesPage.dart';
 import 'package:flutter_view/features/silvers/pages/TitlePage.dart';
+import 'package:flutter_view/features/silvers/pages/WhatIsSliver.dart';
 
 class SliverPresentationPage extends StatefulWidget {
   @override
@@ -9,20 +12,6 @@ class SliverPresentationPage extends StatefulWidget {
 }
 
 class _SliverPresentationPageState extends State<SliverPresentationPage> {
-  final PageController _detailsPageController = new PageController();
-
-//  @override
-//  Widget build(BuildContext context) {
-//    return  new SafeArea(
-//      child: new PageView(
-//        controller: _detailsPageController,
-//        children: [
-//          new TitlePage(),
-//          new SliverTypesPage(),
-//        ]
-//      ),
-//    );
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +29,10 @@ class _SliverPresentationPageState extends State<SliverPresentationPage> {
           },
           body: new PageView(children: [
             new TitlePage(),
+            new WhatIsSliver(),
             new SliverTypesPage(),
+            new SimpleDemo(),
+            new ImplementingHeader(),
           ]),
         ),
       ),

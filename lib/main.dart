@@ -40,6 +40,7 @@ class FlutterView extends StatelessWidget {
     return new StoreProvider(
       store: store,
       child: new MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter View',
         theme: new ThemeData(
           primarySwatch: Colors.green,

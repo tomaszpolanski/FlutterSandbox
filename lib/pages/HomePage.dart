@@ -5,6 +5,8 @@ import 'package:flutter_view/routing/Routes.dart';
 
 class HomePage extends StatelessWidget {
   final List<ExamplePage> _pages = [
+    new ExamplePage("Sliver Presentation", Routes.kSliverPresentation, Icons.important_devices,
+        description: "Let's lear about Slivers!"),
     new ExamplePage("Sliver1", Routes.kSliver1, Icons.golf_course,
         description: "Basic slivers"),
     new ExamplePage("Sliver2", Routes.kSliver2, Icons.add_circle,

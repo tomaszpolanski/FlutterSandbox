@@ -1,5 +1,6 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_view/features/silvers/SliverPresentationPage.dart';
 import 'package:flutter_view/pages/HomePage.dart';
 import 'package:flutter_view/features/photoview/PhotoListPage.dart';
 import 'package:flutter_view/pages/PushNotificationPage.dart';
@@ -17,6 +18,7 @@ class Routes {
   static String kPhotoView = "/home/photoview";
   static String kSliver1 = "/home/sliver1";
   static String kSliver2 = "/home/sliver2";
+  static String kSliverPresentation = "/home/sliver/presentation";
 
   static final Router router = new Router();
 
@@ -29,6 +31,7 @@ class Routes {
     router.define(kPhotoView, handler: photoHandler);
     router.define(kSliver1, handler: new Handler(handlerFunc: (_, __) => new Sliver1()));
     router.define(kSliver2, handler: new Handler(handlerFunc: (_, __) => new Sliver2()));
+    router.define(kSliverPresentation, handler: new Handler(handlerFunc: (_, __) => new SliverPresentationPage()));
   }
 
 }

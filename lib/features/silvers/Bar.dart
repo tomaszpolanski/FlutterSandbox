@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Bar extends StatefulWidget {
+class Bar extends StatelessWidget {
   const Bar({Key key, this.start, this.end}) : super(key: key);
 
   final Color start;
@@ -22,12 +22,6 @@ class Bar extends StatefulWidget {
     );
   }
 
-  @override
-  _BarState createState() => new _BarState();
-}
-
-class _BarState extends State<Bar> {
-  @override
   Widget build(BuildContext context) {
     final _BarSettings settings =
         context.inheritFromWidgetOfExactType(_BarSettings);
@@ -42,11 +36,7 @@ class _BarState extends State<Bar> {
         (1.0 - (settings.currentExtent - settings.minExtent) / deltaExtent)
             .clamp(0.0, 1.0);
 
-    return new Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Color.lerp(widget.start, widget.end, t),
-    );
+    return new Container(color: Color.lerp(start, end, t));
   }
 }
 

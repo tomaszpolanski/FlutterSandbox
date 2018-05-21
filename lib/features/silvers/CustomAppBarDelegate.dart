@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_view/features/silvers/Bar.dart';
-import 'package:flutter_view/features/silvers/SimpleAppBar.dart';
 import 'package:meta/meta.dart';
 
 class CustomAppBarDelegate extends SliverPersistentHeaderDelegate {
@@ -29,9 +28,7 @@ class CustomAppBarDelegate extends SliverPersistentHeaderDelegate {
       minExtent: minExtent,
       maxExtent: maxExtent,
       currentExtent: math.max(minExtent, maxExtent - shrinkOffset),
-      child: new SimpleAppBar(
-        flexibleSpace: flexibleSpace,
-      ),
+      child: flexibleSpace,
     );
   }
 

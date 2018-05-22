@@ -9,12 +9,12 @@ class SliverTypesPage extends StatelessWidget {
     'SliverPersistentHeader',
     'SliverFillViewport',
     'SliverToBoxAdapter',
+    'SliverPadding',
   ];
 
   static const _kTheRest = const [
     'SliverPrototypeExtentList',
     'SliverFillRemaining',
-    'SliverPadding',
     'RenderSliverHelpers (mixin)',
     'RenderSliverMultiBoxAdaptor (abstract)',
     'RenderSliverFixedExtentBoxAdaptor (abstract)',
@@ -39,8 +39,11 @@ class SliverTypesPage extends StatelessWidget {
       top: false,
       bottom: false,
       child: Builder(
-        builder: (BuildContext context) =>
-        new CustomScrollView(
+        builder: (BuildContext context) {
+          final size = MediaQuery.of(context).size;
+          final aspectRatio = size.width / size.height;
+
+          return new CustomScrollView(
           scrollDirection: Axis.vertical,
           slivers: [
             new SliverAppBar(
@@ -48,6 +51,7 @@ class SliverTypesPage extends StatelessWidget {
               automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               flexibleSpace: new FlexibleSpaceBar(
+                centerTitle: true,
                 title: new Text(
                   'Sliver Types',
                   style: Theme
@@ -74,16 +78,19 @@ class SliverTypesPage extends StatelessWidget {
                 ),
               ),
             ),
-            new SliverGrid(
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 20.0,
-                childAspectRatio: 4.0,
-              ),
-              delegate: new SliverChildBuilderDelegate(
-                _sliverTypeDelegate(_kMostUsed),
-                childCount: _kMostUsed.length,
+            new SliverPadding(
+              padding: const EdgeInsets.all(8.0),
+              sliver: new SliverGrid(
+                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: aspectRatio < 1.0 ? 1 : 2,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 20.0,
+                  childAspectRatio: 4.0,
+                ),
+                delegate: new SliverChildBuilderDelegate(
+                  _sliverTypeDelegate(_kMostUsed),
+                  childCount: _kMostUsed.length,
+                ),
               ),
             ),
             new SliverToBoxAdapter(
@@ -100,20 +107,24 @@ class SliverTypesPage extends StatelessWidget {
                 ),
               ),
             ),
-            new SliverGrid(
-              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 20.0,
-                childAspectRatio: 4.0,
-              ),
-              delegate: new SliverChildBuilderDelegate(
-                _sliverTypeDelegate(_kTheRest),
-                childCount: _kTheRest.length,
+            new SliverPadding(
+              padding: const EdgeInsets.all(8.0),
+              sliver: new SliverGrid(
+                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: aspectRatio < 1.0 ? 1 : 2,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 20.0,
+                  childAspectRatio: 4.0,
+                ),
+                delegate: new SliverChildBuilderDelegate(
+                  _sliverTypeDelegate(_kTheRest),
+                  childCount: _kTheRest.length,
+                ),
               ),
             ),
           ],
-        ),
+        );
+        },
       ),
     );
   }

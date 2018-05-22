@@ -7,6 +7,7 @@ class WhatIsSliver extends StatelessWidget {
       appBar: new AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
+        centerTitle: true,
         title: new Text(
           'What is a Sliver?',
           style: Theme.of(context).textTheme.display1.copyWith(
@@ -18,7 +19,8 @@ class WhatIsSliver extends StatelessWidget {
           new Flexible(
             flex: 1,
             child: new Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
               child: new Column(
                 children: <Widget>[
                   new SingleList(),
@@ -30,19 +32,20 @@ class WhatIsSliver extends StatelessWidget {
           new Flexible(
             flex: 1,
             child: new Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
               child: new Column(
                 children: <Widget>[
                   new Container(
                     padding: const EdgeInsets.all(8.0),
                     decoration: new BoxDecoration(
                         color: Colors.purple,
-                        border: new Border.all(color: Colors.black)
-                    ),
+                        border: new Border.all(color: Colors.black)),
                     child: new Column(
                       children: <Widget>[
                         new SingleList(sizeFactor: 0.5),
                         new SingleList(sizeFactor: 0.5),
+                        new SingleList(sizeFactor: 0.5, count: 2),
                       ],
                     ),
                   ),
@@ -58,40 +61,29 @@ class WhatIsSliver extends StatelessWidget {
 }
 
 class SingleList extends StatelessWidget {
-
   final double sizeFactor;
+  final int count;
 
-  const SingleList({Key key, this.sizeFactor = 1.0}) : super(key: key);
+  const SingleList({Key key, this.sizeFactor = 1.0, this.count = 3})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return new Container(
       padding: const EdgeInsets.all(8.0),
       decoration: new BoxDecoration(
-          color: Colors.green,
-          border: new Border.all(color: Colors.black)
-      ),
+          color: Colors.green, border: new Border.all(color: Colors.black)),
       child: new Column(
-        children: <Widget>[
-          new Container(
-            width: double.infinity,
-            height: 30.0 * sizeFactor,
-            color: Colors.red,
-          ),
-          new SizedBox(height: 10.0 * sizeFactor),
-          new Container(
-            width: double.infinity,
-            height: 30.0 * sizeFactor,
-            color: Colors.red,
-          ),
-
-          new SizedBox(height: 10.0 * sizeFactor,),
-          new Container(
-            width: double.infinity,
-            height: 30.0 * sizeFactor,
-            color: Colors.red,
-          )
-        ],
+        children: new List.generate(
+          count,
+          (_) => new Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: new Container(
+                  height: 30.0 * sizeFactor,
+                  color: Colors.red,
+                ),
+              ),
+        ),
       ),
     );
   }

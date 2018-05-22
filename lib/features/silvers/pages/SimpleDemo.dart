@@ -12,6 +12,7 @@ class SimpleDemo extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: false,
           flexibleSpace: new FlexibleSpaceBar(
+            centerTitle: true,
             title: new Text(
               'Sliver Examples',
               style: Theme.of(context).textTheme.display1.copyWith(
@@ -21,7 +22,7 @@ class SimpleDemo extends StatelessWidget {
         ),
         new SliverGrid(
           gridDelegate: new SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 150.0,
+            maxCrossAxisExtent: 250.0,
             mainAxisSpacing: 10.0,
             crossAxisSpacing: 20.0,
             childAspectRatio: 4.0,
@@ -72,17 +73,26 @@ class SimpleDemo extends StatelessWidget {
           ),
         ),
         new SliverToBoxAdapter(
-          child: const Text("First SliverToBoxAdapter"),
-        ),
-        new SliverToBoxAdapter(
-          child: const Text("Second SliverToBoxAdapter"),
+          child: new Center(
+              child: new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: new Text(
+              "SliverToBoxAdapter",
+              style: Theme.of(context).textTheme.title,
+            ),
+          )),
         ),
         new SliverFillViewport(
           delegate: new SliverChildBuilderDelegate(
             (BuildContext context, int index) {
               return new Card(
                 color: Colors.yellowAccent,
-                child: new Text("Fill Viewport $index"),
+                child: new Center(
+                  child: new Text(
+                    "Fill Viewport $index",
+                    style: Theme.of(context).textTheme.title,
+                  ),
+                ),
               );
             },
             childCount: 2,
